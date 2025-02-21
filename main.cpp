@@ -101,10 +101,18 @@ void GameUpdate() {
 		ball.accel.x *= -1;
 		ball.accel.y *= -1;
 	}
+
+	// check collision between ball and brick
+	for (int i = 0; i < bricks.size(); i++) {
+		brick = bricks [i];
+		if (CheckCollisionCircleRec(
 }
 
 void GameRender() {
 	// Draw from furthest to closest
+	
+	// Draw background
+	DrawTexture(texBackground, 0, 0, RAYWHITE);
 
 	// Draw Bricks
 	Brick brick;
@@ -116,9 +124,6 @@ void GameRender() {
 			       brick.rect.height, 
 			       brick.color);
 	}
-
-	// Draw background
-	DrawTexture(texBackground, 0, 0, RAYWHITE);
 
 	// Draw paddle
 	DrawRectangle(player.rect.x, player.rect.y, player.rect.width, player.rect.height, RAYWHITE);
