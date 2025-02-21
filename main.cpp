@@ -103,9 +103,16 @@ void GameUpdate() {
 	}
 
 	// check collision between ball and brick
+	Brick brick;
 	for (int i = 0; i < bricks.size(); i++) {
 		brick = bricks [i];
-		if (CheckCollisionCircleRec(
+		if (CheckCollisionCircleRec(ball.pos, ball.radius, brick.rect)) {
+			ball.accel.y *= -1;
+			bricks.erase(bricks.begin() + i);
+			player.score += 10;
+
+		}
+	}
 }
 
 void GameRender() {
