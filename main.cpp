@@ -49,6 +49,8 @@ void GameStartup() {
 	ball.pos = Vector2{300, 300};
 	ball.velocity = 300.0f;
 
+	std::vector <Color> COLORS {RED, ORANGE, PURPLE, BROWN, PINK};
+
 	Brick newBrick;
 	for (int i = 0; i < 8 ; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -58,7 +60,7 @@ void GameStartup() {
 				newBrick.w,
 				newBrick.h
 			};
-			newBrick.color = RED;
+			newBrick.color = COLORS[rand() % COLORS.size()];
 			bricks.push_back(newBrick);
 		}
 	}
@@ -110,7 +112,6 @@ void GameUpdate() {
 			ball.accel.y *= -1;
 			bricks.erase(bricks.begin() + i);
 			player.score += 10;
-
 		}
 	}
 }
